@@ -2,14 +2,6 @@
 include "services/database.php";       
 session_start();                                // memulai atau melanjutkan sesi jika ada
 
-if(isset($_POST["logout"])){
-    $_SESSION["is_login"] = false;          // session login false, jadi tidak login
-    session_unset();                        // menghapus semua var $_SESSION
-    session_destroy();                      // menghapus sesi aktif dari server
-
-    header("location:index.php");           // direct ke index.php
-}
-
 if(isset($_POST["change-pass"])){
     header("location:changepass.php");          // direct ke changepass.php
 }
