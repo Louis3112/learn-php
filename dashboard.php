@@ -9,6 +9,37 @@ if(isset($_POST["logout"])){
 
     header("location:index.php");           // direct ke index.php
 }
+
+if(isset($_POST["change-pass"])){
+    header("location:changepass.php");          // direct ke changepass.php
+}
+
+if(isset($_POST["change-user"])){
+    header("location:changeuser.php");          // direct ke changeuser.php
+}
+
+if(isset($_POST["delete"])) {                   // jika tombol delete ditekan
+    $username = $_SESSION["username"];          // mengambil data username 
+    $hapus = "DELETE FROM users WHERE username = '$username'";      // query sql
+
+    if($login->query($hapus)){                  // query dijalankan
+        $_SESSION["is_login"] = false;          // session login false, jadi tidak login
+        session_unset();                        // menghapus semua var $_SESSION
+        session_destroy();                      // menghapus sesi aktif dari server
+
+        header("location:index.php");           // direct ke index.php
+    } else {
+        echo "Fail to delete";
+    }
+}
+
+if(isset($_POST["logout"])){
+    $_SESSION["is_login"] = false;          // session login false, jadi tidak login
+    session_unset();                        // menghapus semua var $_SESSION
+    session_destroy();                      // menghapus sesi aktif dari server
+
+    header("location:index.php");           // direct ke index.php
+}
 ?>
 
 <!DOCTYPE html>
