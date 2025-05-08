@@ -18,6 +18,14 @@ if(isset($_POST["change-user"])){
     header("location:changeuser.php");          // direct ke changeuser.php
 }
 
+if(isset($_POST["upload"])){
+    header("location:upload.php");
+}
+
+if(isset($_POST["gallery"])){
+    header("location:gallery.php");
+}
+
 if(isset($_POST["delete"])) {                   // jika tombol delete ditekan
     $username = $_SESSION["username"];          // mengambil data username 
     $hapus = "DELETE FROM users WHERE username = '$username'";      // query sql
